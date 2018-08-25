@@ -23,13 +23,13 @@ class FC:
         return 1 / (1 + np.exp(-in_data))
 
     def forward(self, in_data):
-        self.top_val = self._sigmoid(np.dot(self.w.T, in_data) + self.b)
+        self.top_val = self._sigmoid(np.dot(self.w, in_data) + self.b)
         self.bottom_val = in_data
         return self.top_val
 
     def backward(self, loss):
         residual_z = loss * self.top_val * (1 - self.top_val)
-        grad_w = np.dot(self.bottom_val, residual_z.T)
+        grad_w = np.dot(self.bottom_val, residual_z)
         grad_b = np.sum(residual_z)
         self.w -= self.lr * grad_w
         self.b -= self.lr * grad_b
