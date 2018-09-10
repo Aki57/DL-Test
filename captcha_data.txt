@@ -1,0 +1,11 @@
+# 安装生成程序
+pip install captcha
+
+# 生成数据
+from generate_captcha import generateCaptcha
+g = generateCaptcha()
+X,Y = g.gen_test_captcha()
+
+# 已经训练好的模型
+wget http://tensorflow-1253902462.cosgz.myqcloud.com/captcha/capcha_model.zip
+unzip -o capcha_model.zip
