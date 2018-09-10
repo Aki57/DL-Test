@@ -12,10 +12,10 @@ class SquareLoss:
         return self.loss
 
 class FC:
-    def __init__(self, in_num, out_num, lr =0.01):
+    def __init__(self, in_num, out_num, lr =0.1):
         self._in_num = in_num
         self._out_num = out_num
-        self.w = np.random.randn(out_num, in_num)
+        self.w = np.random.randn(in_num, out_num)
         self.b = np.zeros((out_num, 1))
         self.lr = lr
     
@@ -23,17 +23,21 @@ class FC:
         return 1 / (1 + np.exp(-in_data))
 
     def forward(self, in_data):
-        self.top_val = self._sigmoid(np.dot(self.w, in_data) + self.b)
+        self.top_val = self._sigmoid(np.dot(self.w.T, in_data) + self.b)
         self.bottom_val = in_data
+        print("top_val=", self.top_val)
         return self.top_val
 
     def backward(self, loss):
         residual_z = loss * self.top_val * (1 - self.top_val)
-        grad_w = np.dot(self.bottom_val, residual_z)
+        grad_w = np.dot(self.bottom_val, residual_z.T)
         grad_b = np.sum(residual_z)
         self.w -= self.lr * grad_w
         self.b -= self.lr * grad_b
         residual_x = np.dot(self.w, residual_z)
+        print("residual_z=", residual_z)
+        print("grad_w=", grad_w)
+        print("residual_x=", residual_x)
         return residual_x
 
 class Net:
@@ -43,7 +47,7 @@ class Net:
         self.loss = SquareLoss()
 
     def train(self, X, y):
-        for i in range(10000):
+        for i in range(2):
             # forward step
             layer1out = self.fc1.forward(X)
             layer2out = self.fc2.forward(layer1out)
@@ -59,8 +63,22 @@ class Net:
         print('y={0}'.format(layer2out))    
 
 # and operation result
+"""
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]).T
+y = np.array([[1], [0], [0], [1]]).T
+
+net = Net(2, 4, 1, 0.1)
+net.train(X, y)
+"""
+
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]).T
 y = np.array([[0], [0], [0], [1]]).T
 
 net = Net(2, 4, 1, 0.1)
+net.fc1.w.fill(1)
+net.fc2.w.fill(0)
 net.train(X, y)
+print("=== w1 ===")
+print(net.fc1.w)
+print("=== w2 ===")
+print(net.fc2.w)
