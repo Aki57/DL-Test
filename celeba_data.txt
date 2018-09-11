@@ -1,0 +1,12 @@
+# 获取训练数据
+wget http://tensorflow-1253675457.cosgz.myqcloud.com/face/img_align_celeba.zip
+unzip -q img_align_celeba.zip
+
+# 安装依赖库
+pip install scipy
+pip install pillow
+
+# 下载模型
+wget http://tensorflow-1253675457.cosgz.myqcloud.com/face/GANs_model.zip
+unzip -o GANs_model.zip
+

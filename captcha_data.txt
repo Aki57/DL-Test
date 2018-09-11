@@ -9,3 +9,7 @@ X,Y = g.gen_test_captcha()
 # 已经训练好的模型
 wget http://tensorflow-1253902462.cosgz.myqcloud.com/captcha/capcha_model.zip
 unzip -o capcha_model.zip
+
+# 获取测试集
+wget http://tensorflow-1253902462.cosgz.myqcloud.com/captcha/captcha.zip
+unzip -q captcha.zip
