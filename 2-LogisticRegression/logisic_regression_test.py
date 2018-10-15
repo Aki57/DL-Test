@@ -33,7 +33,7 @@ with tf.Session() as sess:
         for j in range(n_batches):
             X_batch, Y_batch = MNIST.train.next_batch(batch_size)
             _, loss_ = sess.run([optimizer, loss], feed_dict={ X: X_batch, Y: Y_batch})
-            print "Loss of epochs[{0}] batch[{1}]: {2}".format(i, j, loss_)
+            print("Loss of epochs[{0}] batch[{1}]: {2}".format(i, j, loss_))
 
     n_batches = int(MNIST.test.num_examples/batch_size)
     total_correct_preds = 0
@@ -45,4 +45,4 @@ with tf.Session() as sess:
 
         total_correct_preds += sess.run(accuracy)
 
-    print "Accuracy {0}".format(total_correct_preds/MNIST.test.num_examples)
+    print("Accuracy {0}".format(total_correct_preds/MNIST.test.num_examples))

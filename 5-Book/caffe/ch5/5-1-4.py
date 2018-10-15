@@ -1,0 +1,22 @@
+# 告诉我们网络结构配置在哪
+net: "examples/mnist/lenet_train_test.prototxt"
+# 我们要用GPU训练
+solver_mode: GPU
+# 这次的训练一共有10000次迭代，每次迭代 跑多大数据？net里面会给我们答案
+max_iter: 10000
+# 这次的测试每500轮跑一遍，一遍跑100个迭代
+test_iter: 100
+test_interval: 500
+# 每100轮为我们输出一些信息
+display: 100
+# 基础的学习率是0.01，学习率的衰减形式后面再说
+base_lr: 0.01
+lr_policy: "inv"
+gamma: 0.0001
+power: 0.75
+# 动量衰减率是0.9，正则项的权重是0.0005
+momentum: 0.9
+weight_decay: 0.0005
+# 每5000轮保存一下进度
+snapshot: 5000
+snapshot_prefix: "examples/mnist/lenet"

@@ -9,12 +9,13 @@ from linear_regression_model import linearRegressionModel as lrm
 
 if __name__ == '__main__':
     x, y = make_regression(7000)
-    x_train,x_test,y_train, y_test = train_test_split(x, y, test_size=0.5)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.5)
+
     y_lrm_train = y_train.reshape(-1, 1)
     y_lrm_test = y_test.reshape(-1, 1)
 
     linear = lrm(x.shape[1])
-    linear.train(x_train, y_lrm_train,x_test,y_lrm_test)
+    linear.train(x_train, y_lrm_train, x_test, y_lrm_test)
     y_predict = linear.predict(x_test)
     print("Tensorflow R2: ", r2_score(y_predict.ravel(), y_lrm_test.ravel()))
 

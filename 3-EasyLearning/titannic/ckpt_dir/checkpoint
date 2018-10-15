@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\Document\\administer\\Python Scripts\\git\\DL-Test\\3-EasyLearning\\titannic\\ckpt_dir\\model.ckpt"
+all_model_checkpoint_paths: "E:\\Document\\administer\\Python Scripts\\git\\DL-Test\\3-EasyLearning\\titannic\\ckpt_dir\\model.ckpt"

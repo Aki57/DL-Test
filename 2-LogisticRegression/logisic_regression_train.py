@@ -32,4 +32,4 @@ with tf.Session() as sess:
         for j in range(n_batches):
             X_batch, Y_batch = MNIST.train.next_batch(batch_size)
             _, loss_ = sess.run([optimizer, loss], feed_dict={ X: X_batch, Y: Y_batch})
-            print "Loss of epochs[{0}] batch[{1}]: {2}".format(i, j, loss_)
+            print("Loss of epochs[{0}] batch[{1}]: {2}".format(i, j, loss_))
