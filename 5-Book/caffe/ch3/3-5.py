@@ -46,9 +46,9 @@ class Net:
             saliency = self.fc1.backward(layer1loss)
         layer1out = self.fc1.forward(X)
         layer2out = self.fc2.forward(layer1out)
-        print 'X={0}'.format(X)
-        print 't={0}'.format(y)
-        print 'y={0}'.format(layer2out)
+        print('X={0}'.format(X))
+        print('t={0}'.format(y))
+        print('y={0}'.format(layer2out))
 
 
 # initialized by 0 value
@@ -59,10 +59,10 @@ net = Net(2,4,1,0.1)
 net.fc1.w.fill(0)
 net.fc2.w.fill(0)
 net.train(X,y)
-print "=== w1 ==="
-print net.fc1.w
-print "=== w2 ==="
-print net.fc2.w
+print("=== w1 ===")
+print(net.fc1.w)
+print("=== w2 ===")
+print(net.fc2.w)
 
 #initialized by same value
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]).T
@@ -72,8 +72,8 @@ net = Net(2,4,1,0.1)
 net.fc1.w.fill(1)
 net.fc2.w.fill(0)
 net.train(X,y)
-print "=== w1 ==="
-print net.fc1.w
-print "=== w2 ==="
-print net.fc2.w
+print("=== w1 ===")
+print(net.fc1.w)
+print("=== w2 ===")
+print(net.fc2.w)
 

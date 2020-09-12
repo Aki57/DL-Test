@@ -9,9 +9,9 @@ for a in range(2):
 		for c in range(2):
 			for d in range(2):
 				energy = ab[a][b] * ac[a][c] * bd[b][d] * cd[c][d]
-				print 'Energy(a={},b={},c={},d={})={}'.format(a,b,c,d,energy)
+				print('Energy(a={},b={},c={},d={})={}'.format(a,b,c,d,energy))
 				z += energy
-print 'Z={}'.format(z)
+print('Z={}'.format(z))
 
 # marginal prob
 for a in range(2):
@@ -20,4 +20,4 @@ for a in range(2):
 		for c in range(2):
 			for d in range(2):
 				energy += ab[a][b] * ac[a][c] * bd[b][d] * cd[c][d]
-		print 'Energy(a={},b={})={}'.format(a,b,energy)
+		print('Energy(a={},b={})={}'.format(a,b,energy))

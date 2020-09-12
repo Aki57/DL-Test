@@ -12,6 +12,7 @@ def conv2(X, k):
         for x in range(ret_col):
             sub = X[y : y + k_row, x : x + k_col]
             ret[y,x] = np.sum(sub * k)
+    return ret
 
 class ConvLayer:
     def __init__(self, in_channel, out_channel, kernal_size):
@@ -38,6 +39,28 @@ class ConvLayer:
     def backward(self, loss):
     """
 
+mat = cv2.imread('fn000055.png',0)
+print(mat.shape)
+row, col = mat.shape # mat获取shape出错
+in_data = mat.reshape(1,row,col)
+in_data = in_data.astype(np.float) / 255
+print(in_data[0])
+plt.imshow(in_data[0], cmap='Greys_r')
+plt.show()
+
+meanConv = ConvLayer(1,1,5)
+meanConv.w[0,0] = np.ones((5,5)) / (5*5)
+mean_out = meanConv.forward(in_data)
+print(meanConv.w[0,0])
+plt.imshow(mean_out[0], cmap='Greys_r')
+plt.show()
+
+sobelConv = ConvLayer(1,1,3)
+sobelConv.w[0,0] = np.array([[-1,-2,-1],[0,0,0],[1,2,1]])
+sobel_out = sobelConv.forward(in_data)
+plt.imshow(sobel_out[0], cmap='Greys_r')
+plt.show()
+
 def gabor_fn(sigma, theta, Lambda, psi, gamma):
     sigma_x = sigma
     sigma_y = float(sigma)/gamma
@@ -48,26 +71,10 @@ def gabor_fn(sigma, theta, Lambda, psi, gamma):
     gb = np.exp(-0.5 * (x_theta**2 / sigma_x**2 + y_theta**2/ sigma_y**2)) * np.cos(2 * np.pi / Lambda * x_theta + psi)
     return gb
 
-mat = cv2.imread('fn000055.png',0)
-row, col = mat.shape # mat获取shape出错
-in_data = mat.reshape(1,row,col)
-in_data = in_data.astype(np.float) / 255
-print(in_data[0])
-plt.imshow(in_data[0], cmap='Greys_r')
-
-meanConv = ConvLayer(1,1,5)
-meanConv.w[0,0] = np.ones((5,5)) / (5*5)
-mean_out = meanConv.forward(in_data)
-print(meanConv.w[0,0])
-plt.imshow(mean_out[0], cmap='Greys_r')
-
-sobelConv = ConvLayer(1,1,3)
-sobelConv.w[0,0] = np.array([[-1,-2,-1],[0,0,0],[1,2,1]])
-sobel_out = sobelConv.forward(in_data)
-plt.imshow(sobel_out[0], cmap='Greys_r')
 
 gaborConv = ConvLayer(1,1,3)
 gaborConv.w[0,0] = gabor_fn(2, 0, 0.3, 1, 2)
 gabor_out = gaborConv.forward(in_data)
 print(gaborConv.w[0,0])
 plt.imshow(gabor_out[0], cmap='Greys_r')
+plt.show()

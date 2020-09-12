@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 X_batch, Y_batch = MNIST.train.next_batch(batch_size)
                 _, loss_ = sess.run([optimizer, loss], feed_dict={X: X_batch, Y: Y_batch})
                 if i % 10 == 5 and j == 0:
-                    print "Loss of epochs[{0}]: {1}".format(i, loss_)
+                    print("Loss of epochs[{0}]: {1}".format(i, loss_))
 
         # test the model
         n_batches = int(MNIST.test.num_examples/batch_size)
@@ -66,4 +66,4 @@ if __name__ == "__main__":
 
             total_correct_preds += sess.run(accuracy)
 
-        print "Accuracy {0}".format(total_correct_preds/MNIST.test.num_examples)
+        print("Accuracy {0}".format(total_correct_preds/MNIST.test.num_examples))

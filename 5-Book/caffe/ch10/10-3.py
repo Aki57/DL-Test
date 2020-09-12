@@ -18,10 +18,10 @@ def mutual_info(x_var, y_var):
 
 a = np.array([0,0,5,6,0,4,4,3,1,2])
 b = np.array([3,4,5,5,3,7,7,6,5,1])
-print mutual_info(a,b)
+print(mutual_info(a,b))
 # 0.653521
 
 a = np.array([0,0,5,6,0,4,4,3,1,2])
 b = np.array([3,3,5,6,3,7,7,9,4,8])
-print mutual_info(a,b)
+print(mutual_info(a,b))
 # 0.796658

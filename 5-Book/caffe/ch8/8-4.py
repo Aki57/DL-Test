@@ -19,8 +19,8 @@ def genData(n, p, s):
 
 A, b = genData(100, 50, 20)
 lmd = math.sqrt(2 * 100 * math.log(50))
-print A
-print b
+print(A)
+print(b)
 
 def obj_func(A, x, b, lmd):
     f_value = math.pow(np.linalg.norm(np.dot(A,x.T) - b),2) / 2
@@ -34,25 +34,25 @@ def subgradient_process(A, b, lmd):
         obj_value = obj_func(A, x, b, lmd)
         while(True):
             prime_grad = np.dot(A.T, np.dot(A, x.T) - b)
-            print prime_grad
+            print(prime_grad)
             x_new = subgradient_descent(x, prime_grad, step_length, lmd)
             obj_value2 = obj_func(A, x_new, b, lmd)
             if obj_value2 <= obj_value:
                 break
             else:
                 step_length = step_length * 0.5 # BackTrace
-            print step_length, obj_value, obj_value2
+            print(step_length, obj_value, obj_value2)
             #print x_new
         if abs(obj_value - obj_value2) < 1e-6:
             break
         else:
             x = x_new
-        print 'x=' + str(x)
-        print 'obj_value2=' + str(obj_value2)
+        print('x=' + str(x))
+        print('obj_value2=' + str(obj_value2))
     return x
 
 xarr = subgradient_process(A, b, lmd)
-print xarr
+print(xarr)
 
 def gradient_descent(x_k, step_length,A,b):
     f_prime = np.dot(A.T, np.dot(A,x_k.T) - b) # derivertive of f_function
@@ -96,4 +96,4 @@ def proximal_process(A, b, lmd):
     return x_k
 
 xarr = proximal_process(A, b, lmd)
-print xarr
+print(xarr)

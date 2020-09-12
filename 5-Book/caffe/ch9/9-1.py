@@ -15,4 +15,4 @@ def calc_IoU(rectA, rectB):
 	inner_area = (inner_xend - inner_x) * (inner_yend - inner_y)
 	return inner_area / float(outer_area)
 
-print calc_IoU([30, 30, 30, 30], [40, 40, 20, 20])
+print(calc_IoU([30, 30, 30, 30], [40, 40, 20, 20]))

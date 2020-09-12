@@ -14,10 +14,10 @@ def exp(a, b):
     b = np.array(b, dtype=np.float32)
     a /= a.sum()
     b /= b.sum()
-    print a
-    print b
-    print KL(a,b)
-    print JS(a,b)
+    print(a)
+    print(b)
+    print(KL(a,b))
+    print(JS(a,b))
 
 # exp 1
 exp([1,2,3,4,5],[5,4,3,2,1])

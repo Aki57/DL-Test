@@ -38,7 +38,7 @@ class ConvLayer:
 from PIL import Image
 im = Image.open(sys.argv[1])
 col,row = im.size
-print row, col
+print(row, col)
 raw_data = [[im.getpixel((w,h)) for w in range(col)] for h in range(row)]
 in_data = np.array([[0.299 * raw_data[h][w][0] + 0.587 * raw_data[h][w][1] + 0.114 * raw_data[h][w][2]  for w in range(col)] for h in range(row)])
 in_data = in_data.reshape(1, row, col)
@@ -49,7 +49,7 @@ plt.show()
 # mean filter
 meanConv = ConvLayer(1,1,5)
 w = np.ones((5,5)) / (5 * 5)
-print w
+print(w)
 meanConv.w[0,0] = w
 mean_out = meanConv.forward(in_data)
 plt.imshow(mean_out[0], cmap='Greys_r')
@@ -72,7 +72,7 @@ def gabor_fn(sigma, theta, Lambda, psi, gamma):
     y_theta = -x * np.sin(theta) + y * np.cos(theta)
     gb = np.exp(-.5 * (x_theta ** 2 / sigma_x ** 2 + y_theta ** 2 / sigma_y ** 2)) * np.cos(2 * np.pi / Lambda * x_theta + psi)
     return gb
-print gabor_fn(2, 0, 0.3, 0, 2)
+print(gabor_fn(2, 0, 0.3, 0, 2))
 gaborConv = ConvLayer(1,1,3)
 gaborConv.w[0,0] = gabor_fn(2, 0, 0.3, 1, 2)
 gabor_out = gaborConv.forward(in_data)

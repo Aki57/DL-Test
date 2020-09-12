@@ -6,9 +6,9 @@ def gd(x_start, step, g):   # gd means Gradient Descent
     for i in range(20):
         grad = g(x)
         x -= grad * step
-        print '[ Epoch {0} ] grad = {1}, x = {2}'.format(i, grad, x)
+        print('[ Epoch {0} ] grad = {1}, x = {2}'.format(i, grad, x))
         if abs(grad) < 1e-6:
-            break;
+            break
     return x
 
 def f(x):

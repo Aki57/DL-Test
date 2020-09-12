@@ -8,8 +8,8 @@ plt.show()
 
 # creating simple classification datasets
 cls_data = d.make_classification(100, 2, 2, 0, 0, 2)
-print len(cls_data)
-print cls_data[1]
+print(len(cls_data))
+print(cls_data[1])
 cls0_data = cls_data[0][cls_data[1] == 0]
 cls1_data = cls_data[0][cls_data[1] == 1]
 
